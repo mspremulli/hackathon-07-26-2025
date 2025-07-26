@@ -13,7 +13,9 @@
     "test:extended": "ts-node tests/test-extended-scraper.ts",
     "setup": "bash scripts/setup/setup-engineer2.sh",
     "start": "bash scripts/start-engineer2.sh",
-    "integration:test": "ts-node src/integration/orkes-worker.ts"
+    "integration:test": "ts-node src/integration/orkes-worker.ts",
+    "api:mongodb": "ts-node src/api/mongodb-api.ts",
+    "migrate:mongodb": "ts-node src/database/migrate-to-mongodb.ts"
   },
   "dependencies": {
     "@types/cheerio": "^0.22.35",
@@ -23,6 +25,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
+    "mongoose": "^8.16.5",
     "ws": "^8.16.0"
   },
   "devDependencies": {
