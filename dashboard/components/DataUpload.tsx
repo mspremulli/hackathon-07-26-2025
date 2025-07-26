@@ -160,7 +160,7 @@ export default function DataUpload({ onUploadComplete }: DataUploadProps) {
 
       {/* Google Analytics */}
       <div className="mb-6">
-        <h4 className="text-sm font-medium text-gray-700 mb-3">Google Analytics</h4>
+        <h4 className="text-sm font-medium text-gray-700 mb-3">Google Analytics(coming soon)</h4>
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
