@@ -3,9 +3,9 @@ import { ExtendedRealScrapers } from './extended-real-scrapers';
 import { FileStorage } from '../utils/file-storage';
 
 export class UltimateHybridScraper {
-  private hybridScraper: HybridScraperAgent;
-  private extendedScraper: ExtendedRealScrapers;
-  private storage: FileStorage;
+  protected hybridScraper: HybridScraperAgent;
+  protected extendedScraper: ExtendedRealScrapers;
+  protected storage: FileStorage;
   
   constructor() {
     this.hybridScraper = new HybridScraperAgent();
