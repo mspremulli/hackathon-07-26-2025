@@ -1,0 +1,30 @@
+{
+  "productName": "React",
+  "feedback": [
+    {
+      "text": "Q: How to fix memory leak in React v3.0?\nI'm seeing constant memory growth when using the streaming API...",
+      "author": "developer123",
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "stackoverflow",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 45,
+        "replies": 12,
+        "views": 2340
+      },
+      "url": "https://stackoverflow.com/questions/12345"
+    },
+    {
+      "text": "Q: Best practices for React authentication?\nWhat's the recommended approach for handling OAuth2...",
+      "author": "security-focused",
+      "date": "2024-01-17T00:00:00.000Z",
+      "source": "stackoverflow",
+      "sentiment": "neutral",
+      "engagement": {
+        "likes": 89,
+        "replies": 23,
+        "views": 5670
+      }
+    }
+  ]
+}

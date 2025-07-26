@@ -1,0 +1,29 @@
+{
+  "repository": "vercel/next.js",
+  "feedback": [
+    {
+      "text": "The new API is breaking backwards compatibility. This is a major issue for enterprise users.",
+      "author": "enterprise-user",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "github",
+      "sentiment": "negative",
+      "engagement": {
+        "replies": 23,
+        "likes": 45
+      },
+      "url": "https://github.com/vercel/next.js/issues/123"
+    },
+    {
+      "text": "Great work on the performance improvements! Seeing 3x faster load times.",
+      "author": "happy-dev",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "github",
+      "sentiment": "positive",
+      "engagement": {
+        "replies": 12,
+        "likes": 67
+      },
+      "url": "https://github.com/vercel/next.js/issues/124"
+    }
+  ]
+}

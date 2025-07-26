@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "text": "This tutorial saved me hours of debugging. Thank you!",
+      "author": "DevTutorials",
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "youtube",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 234,
+        "replies": 45
+      },
+      "url": "https://youtube.com/watch?v=abc123"
+    },
+    {
+      "text": "The audio quality is terrible, can barely hear the explanation",
+      "author": "Viewer99",
+      "date": "2024-01-17T00:00:00.000Z",
+      "source": "youtube",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 12,
+        "replies": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "all_feedback": [
+    {
+      "text": "The new API is breaking backwards compatibility. This is a major issue for enterprise users.",
+      "author": "enterprise-user",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "github",
+      "sentiment": "negative",
+      "engagement": {
+        "replies": 23,
+        "likes": 45
+      },
+      "url": "https://github.com/vercel/next.js/issues/123"
+    },
+    {
+      "text": "Great work on the performance improvements! Seeing 3x faster load times.",
+      "author": "happy-dev",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "github",
+      "sentiment": "positive",
+      "engagement": {
+        "replies": 12,
+        "likes": 67
+      },
+      "url": "https://github.com/vercel/next.js/issues/124"
+    },
+    {
+      "text": "Q: How to fix memory leak in Django v3.0?\nI'm seeing constant memory growth when using the streaming API...",
+      "author": "developer123",
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "stackoverflow",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 45,
+        "replies": 12,
+        "views": 2340
+      },
+      "url": "https://stackoverflow.com/questions/12345"
+    },
+    {
+      "text": "Q: Best practices for Django authentication?\nWhat's the recommended approach for handling OAuth2...",
+      "author": "security-focused",
+      "date": "2024-01-17T00:00:00.000Z",
+      "source": "stackoverflow",
+      "sentiment": "neutral",
+      "engagement": {
+        "likes": 89,
+        "replies": 23,
+        "views": 5670
+      }
+    },
+    {
+      "text": "Anyone else having issues with the mobile app crashing?",
+      "author": "user123",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "discord",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 5,
+        "replies": 12
+      }
+    },
+    {
+      "text": "The new feature is amazing! Finally what we've been waiting for",
+      "author": "poweruser",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "discord",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 34,
+        "replies": 8
+      }
+    },
+    {
+      "text": "AI startup is overhyped. We tried it and went back to our old solution after 2 months.",
+      "author": "skeptical_dev",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "hackernews",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 234,
+        "replies": 89
+      },
+      "url": "https://news.ycombinator.com/item?id=38912345"
+    },
+    {
+      "text": "We've been using AI startup in production for 6 months. Rock solid and great performance.",
+      "author": "cto_startup",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "hackernews",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 456,
+        "replies": 123
+      }
+    },
+    {
+      "text": "Impressed by Microsoft's commitment to sustainability. More tech companies should follow their lead.",
+      "author": "Tech Executive",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "linkedin",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 567,
+        "replies": 89,
+        "views": 12000
+      }
+    },
+    {
+      "text": "Former employees of Microsoft - what was your experience with work-life balance?",
+      "author": "HR Professional",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "linkedin",
+      "sentiment": "neutral",
+      "engagement": {
+        "likes": 234,
+        "replies": 156,
+        "views": 8900
+      }
+    },
+    {
+      "text": "Pros: Great benefits and learning opportunities\nCons: Long hours and high pressure environment",
+      "author": "Software Engineer",
+      "date": "2024-01-15T00:00:00.000Z",
+      "source": "glassdoor",
+      "sentiment": "neutral",
+      "engagement": {
+        "likes": 45
+      }
+    },
+    {
+      "text": "Pros: Innovation-focused culture\nCons: Management needs improvement, unclear career progression",
+      "author": "Product Manager",
+      "date": "2024-01-14T00:00:00.000Z",
+      "source": "glassdoor",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 67
+      }
+    },
+    {
+      "text": "This tutorial saved me hours of debugging. Thank you!",
+      "author": "DevTutorials",
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "youtube",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 234,
+        "replies": 45
+      },
+      "url": "https://youtube.com/watch?v=abc123"
+    },
+    {
+      "text": "The audio quality is terrible, can barely hear the explanation",
+      "author": "Viewer99",
+      "date": "2024-01-17T00:00:00.000Z",
+      "source": "youtube",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 12,
+        "replies": 3
+      }
+    }
+  ],
+  "by_source": {
+    "github": [
+      {
+        "text": "The new API is breaking backwards compatibility. This is a major issue for enterprise users.",
+        "author": "enterprise-user",
+        "date": "2024-01-20T00:00:00.000Z",
+        "source": "github",
+        "sentiment": "negative",
+        "engagement": {
+          "replies": 23,
+          "likes": 45
+        },
+        "url": "https://github.com/vercel/next.js/issues/123"
+      },
+      {
+        "text": "Great work on the performance improvements! Seeing 3x faster load times.",
+        "author": "happy-dev",
+        "date": "2024-01-19T00:00:00.000Z",
+        "source": "github",
+        "sentiment": "positive",
+        "engagement": {
+          "replies": 12,
+          "likes": 67
+        },
+        "url": "https://github.com/vercel/next.js/issues/124"
+      }
+    ],
+    "stackoverflow": [
+      {
+        "text": "Q: How to fix memory leak in Django v3.0?\nI'm seeing constant memory growth when using the streaming API...",
+        "author": "developer123",
+        "date": "2024-01-18T00:00:00.000Z",
+        "source": "stackoverflow",
+        "sentiment": "negative",
+        "engagement": {
+          "likes": 45,
+          "replies": 12,
+          "views": 2340
+        },
+        "url": "https://stackoverflow.com/questions/12345"
+      },
+      {
+        "text": "Q: Best practices for Django authentication?\nWhat's the recommended approach for handling OAuth2...",
+        "author": "security-focused",
+        "date": "2024-01-17T00:00:00.000Z",
+        "source": "stackoverflow",
+        "sentiment": "neutral",
+        "engagement": {
+          "likes": 89,
+          "replies": 23,
+          "views": 5670
+        }
+      }
+    ],
+    "discord": [
+      {
+        "text": "Anyone else having issues with the mobile app crashing?",
+        "author": "user123",
+        "date": "2024-01-20T00:00:00.000Z",
+        "source": "discord",
+        "sentiment": "negative",
+        "engagement": {
+          "likes": 5,
+          "replies": 12
+        }
+      },
+      {
+        "text": "The new feature is amazing! Finally what we've been waiting for",
+        "author": "poweruser",
+        "date": "2024-01-19T00:00:00.000Z",
+        "source": "discord",
+        "sentiment": "positive",
+        "engagement": {
+          "likes": 34,
+          "replies": 8
+        }
+      }
+    ],
+    "hackernews": [
+      {
+        "text": "AI startup is overhyped. We tried it and went back to our old solution after 2 months.",
+        "author": "skeptical_dev",
+        "date": "2024-01-20T00:00:00.000Z",
+        "source": "hackernews",
+        "sentiment": "negative",
+        "engagement": {
+          "likes": 234,
+          "replies": 89
+        },
+        "url": "https://news.ycombinator.com/item?id=38912345"
+      },
+      {
+        "text": "We've been using AI startup in production for 6 months. Rock solid and great performance.",
+        "author": "cto_startup",
+        "date": "2024-01-19T00:00:00.000Z",
+        "source": "hackernews",
+        "sentiment": "positive",
+        "engagement": {
+          "likes": 456,
+          "replies": 123
+        }
+      }
+    ],
+    "linkedin": [
+      {
+        "text": "Impressed by Microsoft's commitment to sustainability. More tech companies should follow their lead.",
+        "author": "Tech Executive",
+        "date": "2024-01-20T00:00:00.000Z",
+        "source": "linkedin",
+        "sentiment": "positive",
+        "engagement": {
+          "likes": 567,
+          "replies": 89,
+          "views": 12000
+        }
+      },
+      {
+        "text": "Former employees of Microsoft - what was your experience with work-life balance?",
+        "author": "HR Professional",
+        "date": "2024-01-19T00:00:00.000Z",
+        "source": "linkedin",
+        "sentiment": "neutral",
+        "engagement": {
+          "likes": 234,
+          "replies": 156,
+          "views": 8900
+        }
+      }
+    ],
+    "glassdoor": [
+      {
+        "text": "Pros: Great benefits and learning opportunities\nCons: Long hours and high pressure environment",
+        "author": "Software Engineer",
+        "date": "2024-01-15T00:00:00.000Z",
+        "source": "glassdoor",
+        "sentiment": "neutral",
+        "engagement": {
+          "likes": 45
+        }
+      },
+      {
+        "text": "Pros: Innovation-focused culture\nCons: Management needs improvement, unclear career progression",
+        "author": "Product Manager",
+        "date": "2024-01-14T00:00:00.000Z",
+        "source": "glassdoor",
+        "sentiment": "negative",
+        "engagement": {
+          "likes": 67
+        }
+      }
+    ],
+    "youtube": [
+      {
+        "text": "This tutorial saved me hours of debugging. Thank you!",
+        "author": "DevTutorials",
+        "date": "2024-01-18T00:00:00.000Z",
+        "source": "youtube",
+        "sentiment": "positive",
+        "engagement": {
+          "likes": 234,
+          "replies": 45
+        },
+        "url": "https://youtube.com/watch?v=abc123"
+      },
+      {
+        "text": "The audio quality is terrible, can barely hear the explanation",
+        "author": "Viewer99",
+        "date": "2024-01-17T00:00:00.000Z",
+        "source": "youtube",
+        "sentiment": "negative",
+        "engagement": {
+          "likes": 12,
+          "replies": 3
+        }
+      }
+    ]
+  },
+  "insights": {
+    "total_feedback_items": 14,
+    "sources_analyzed": [
+      "github",
+      "stackoverflow",
+      "discord",
+      "hackernews",
+      "linkedin",
+      "glassdoor",
+      "youtube"
+    ],
+    "total_engagement": 2729,
+    "sentiment_distribution": {
+      "positive": 5,
+      "negative": 6,
+      "neutral": 3
+    },
+    "most_engaged_content": [
+      {
+        "source": "linkedin",
+        "text": "Impressed by Microsoft's commitment to sustainability. More tech companies should follow their lead....",
+        "engagement": {
+          "likes": 567,
+          "replies": 89,
+          "views": 12000
+        }
+      },
+      {
+        "source": "hackernews",
+        "text": "We've been using AI startup in production for 6 months. Rock solid and great performance....",
+        "engagement": {
+          "likes": 456,
+          "replies": 123
+        }
+      },
+      {
+        "source": "linkedin",
+        "text": "Former employees of Microsoft - what was your experience with work-life balance?...",
+        "engagement": {
+          "likes": 234,
+          "replies": 156,
+          "views": 8900
+        }
+      }
+    ],
+    "source_breakdown": [
+      {
+        "source": "github",
+        "count": 2,
+        "avg_sentiment": "mixed"
+      },
+      {
+        "source": "stackoverflow",
+        "count": 2,
+        "avg_sentiment": "mostly negative"
+      },
+      {
+        "source": "discord",
+        "count": 2,
+        "avg_sentiment": "mixed"
+      },
+      {
+        "source": "hackernews",
+        "count": 2,
+        "avg_sentiment": "mixed"
+      },
+      {
+        "source": "linkedin",
+        "count": 2,
+        "avg_sentiment": "mostly positive"
+      },
+      {
+        "source": "glassdoor",
+        "count": 2,
+        "avg_sentiment": "mostly negative"
+      },
+      {
+        "source": "youtube",
+        "count": 2,
+        "avg_sentiment": "mixed"
+      }
+    ]
+  }
+}

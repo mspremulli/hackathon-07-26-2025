@@ -1,0 +1,23 @@
+{
+  "app_name": "OpenAI",
+  "platform": "google_reviews",
+  "total_reviews": 156,
+  "average_rating": 3.8,
+  "reviews": [
+    {
+      "text": "Customer service was helpful but the product quality has declined",
+      "rating": 3,
+      "date": "2024-01-15T00:00:00.000Z",
+      "source": "google_reviews",
+      "verified": true
+    },
+    {
+      "text": "Great experience overall. Fast shipping and good communication.",
+      "rating": 5,
+      "date": "2024-01-14T00:00:00.000Z",
+      "source": "google_reviews",
+      "verified": true
+    }
+  ],
+  "scraped_at": "2025-07-26T20:30:22.773Z"
+}

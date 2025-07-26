@@ -1,0 +1,26 @@
+{
+  "feedback": [
+    {
+      "text": "Anyone else having issues with the mobile app crashing?",
+      "author": "user123",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "discord",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 5,
+        "replies": 12
+      }
+    },
+    {
+      "text": "The new feature is amazing! Finally what we've been waiting for",
+      "author": "poweruser",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "discord",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 34,
+        "replies": 8
+      }
+    }
+  ]
+}
