@@ -7,6 +7,15 @@ const port = 3000;
 // Enable CORS for dashboard
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Debug middleware
+app.use((req, res, next) => {
+  if (req.method !== 'GET') {
+    console.log(`${req.method} ${req.url}`);
+  }
+  next();
+});
 
 // In-memory storage for contexts (simulating Senso.ai)
 const contextStore = new Map();
@@ -299,6 +308,91 @@ app.get('/api/senso/context-window', (req, res) => {
     });
   } catch (error) {
     console.error('API Error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Handle CSV upload from dashboard
+app.post('/api/upload/csv', (req, res) => {
+  console.log('📊 CSV upload endpoint hit!');
+  try {
+    const { contexts } = req.body;
+    console.log('Received contexts:', contexts?.length || 0);
+    
+    if (!contexts || !Array.isArray(contexts)) {
+      return res.status(400).json({ error: 'Invalid contexts data' });
+    }
+    
+    // Store uploaded contexts
+    contexts.forEach(ctx => {
+      contextStore.set(ctx.id, ctx);
+    });
+    
+    console.log(`📊 Stored ${contexts.length} rows from CSV upload`);
+    
+    res.json({ 
+      success: true, 
+      message: `Stored ${contexts.length} contexts from CSV`,
+      totalContexts: contextStore.size 
+    });
+  } catch (error) {
+    console.error('CSV upload error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Handle Google Analytics data
+app.post('/api/upload/google-analytics', (req, res) => {
+  try {
+    const { data } = req.body;
+    
+    // Simulate processing Google Analytics data
+    const gaContexts = [
+      {
+        id: `ga-${Date.now()}-1`,
+        source: 'google_analytics',
+        type: 'metrics',
+        timestamp: new Date(),
+        data: {
+          metric: 'User Engagement',
+          value: '85%',
+          trend: '+12%'
+        },
+        metadata: {
+          sentiment: 'positive',
+          category: 'engagement'
+        },
+        tags: ['google-analytics', 'metrics', 'engagement']
+      },
+      {
+        id: `ga-${Date.now()}-2`,
+        source: 'google_analytics',
+        type: 'metrics',
+        timestamp: new Date(),
+        data: {
+          metric: 'Bounce Rate',
+          value: '35%',
+          trend: '-5%'
+        },
+        metadata: {
+          sentiment: 'positive',
+          category: 'performance'
+        },
+        tags: ['google-analytics', 'metrics', 'bounce-rate']
+      }
+    ];
+    
+    gaContexts.forEach(ctx => contextStore.set(ctx.id, ctx));
+    
+    console.log(`📈 Integrated Google Analytics data`);
+    
+    res.json({ 
+      success: true, 
+      message: 'Google Analytics data integrated successfully',
+      metricsAdded: gaContexts.length
+    });
+  } catch (error) {
+    console.error('GA upload error:', error);
     res.status(500).json({ error: error.message });
   }
 });

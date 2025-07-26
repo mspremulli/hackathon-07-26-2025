@@ -15,6 +15,7 @@ import SentimentChart from '../components/SentimentChart';
 import TrendChart from '../components/TrendChart';
 import FeedbackList from '../components/FeedbackList';
 import TopIssues from '../components/TopIssues';
+import DataUpload from '../components/DataUpload';
 
 export default function Dashboard() {
   const [stats, setStats] = useState<any>(null);
@@ -154,8 +155,9 @@ export default function Dashboard() {
           <div className="lg:col-span-2">
             <FeedbackList feedback={feedback} />
           </div>
-          <div>
+          <div className="space-y-6">
             <TopIssues issues={stats?.topIssues || []} />
+            <DataUpload onUploadComplete={fetchData} />
           </div>
         </div>
 
