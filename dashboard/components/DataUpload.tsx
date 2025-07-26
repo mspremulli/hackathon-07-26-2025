@@ -160,7 +160,7 @@ export default function DataUpload({ onUploadComplete }: DataUploadProps) {
 
       {/* Google Analytics */}
       <div className="mb-6">
-        <h4 className="text-sm font-medium text-gray-700 mb-3">Google Analytics(coming soon)</h4>
+        <h4 className="text-sm font-medium text-gray-700 mb-3">Google Analytics</h4>
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -169,7 +169,7 @@ export default function DataUpload({ onUploadComplete }: DataUploadProps) {
           className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors disabled:opacity-50"
         >
           <BarChart3 className="w-5 h-5 mr-2 text-orange-500" />
-          Connect Google Analytics
+          Connect Google Analytics(coming soon)
         </motion.button>
       </div>
 
