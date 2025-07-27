@@ -157,12 +157,22 @@ app.post('/api/feedback/bulk', async (req, res) => {
       return res.status(400).json({ error: 'feedbackList must be an array' });
     }
     
-    const result = await Feedback.insertMany(feedbackList, { ordered: false });
+    // Use bulkWrite for better duplicate handling
+    const bulkOps = feedbackList.map((item: any) => ({
+      updateOne: {
+        filter: { id: item.id },
+        update: { $set: item },
+        upsert: true
+      }
+    }));
+    
+    const result = await Feedback.bulkWrite(bulkOps);
     
     res.json({ 
       success: true, 
-      inserted: result.length,
-      message: `Successfully inserted ${result.length} feedback items`
+      inserted: result.upsertedCount,
+      modified: result.modifiedCount,
+      message: `Successfully processed ${feedbackList.length} items (${result.upsertedCount} new, ${result.modifiedCount} updated)`
     });
   } catch (error) {
     console.error('Error bulk inserting feedback:', error);

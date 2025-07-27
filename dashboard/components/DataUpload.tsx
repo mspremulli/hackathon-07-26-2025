@@ -46,7 +46,7 @@ export default function DataUpload({ onUploadComplete }: DataUploadProps) {
     formData.append('type', file.name.endsWith('.csv') ? 'csv' : 'json');
 
     try {
-      const response = await fetch('/api/upload', {
+      const response = await fetch('/api/upload-debug', {
         method: 'POST',
         body: formData,
       });
@@ -55,8 +55,16 @@ export default function DataUpload({ onUploadComplete }: DataUploadProps) {
         const result = await response.json();
         console.log('Upload result:', result);
         setUploadStatus('success');
+        
+        // Show success message with details
+        if (result.details?.mongoResponse) {
+          const mongo = result.details.mongoResponse;
+          console.log(`✅ MongoDB: ${mongo.message}`);
+          alert(`Success! Added ${mongo.inserted || 0} new items, updated ${mongo.modified || 0} items.`);
+        }
+        
         setTimeout(() => {
-          onUploadComplete();
+          onUploadComplete(); // This will refresh the dashboard
           setUploadStatus('idle');
         }, 2000);
       } else {

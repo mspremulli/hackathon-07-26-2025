@@ -16,6 +16,13 @@ import TrendChart from '../components/TrendChart';
 import FeedbackList from '../components/FeedbackList';
 import TopIssues from '../components/TopIssues';
 import DataUpload from '../components/DataUpload';
+import dynamic from 'next/dynamic';
+
+// Dynamic import to avoid SSR issues
+const VoiceEIR = dynamic(() => import('../components/VoiceDemo'), {
+  ssr: false,
+  loading: () => <div className="fixed bottom-8 right-8 bg-gray-200 rounded-lg p-4">Loading Voice...</div>
+});
 
 export default function Dashboard() {
   const [stats, setStats] = useState<any>(null);
@@ -26,10 +33,33 @@ export default function Dashboard() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [statsRes, feedbackRes] = await Promise.all([
-        fetch('/api/senso/stats').then(r => r.json()),
-        fetch('/api/senso/feedback').then(r => r.json())
-      ]);
+      // Try MongoDB API first, fallback to Senso API
+      let statsRes, feedbackRes;
+      
+      try {
+        // Try MongoDB API on port 3003
+        const [mongoStatsRes, mongoFeedbackRes] = await Promise.all([
+          fetch('http://localhost:3003/api/stats'),
+          fetch('http://localhost:3003/api/feedback?limit=50')
+        ]);
+        
+        if (mongoStatsRes.ok && mongoFeedbackRes.ok) {
+          statsRes = await mongoStatsRes.json();
+          feedbackRes = await mongoFeedbackRes.json();
+          console.log('📊 Loaded data from MongoDB');
+        } else {
+          throw new Error('MongoDB API not available');
+        }
+      } catch (mongoError) {
+        // Fallback to Senso API
+        console.log('📡 Falling back to Senso API');
+        const [sensoStatsRes, sensoFeedbackRes] = await Promise.all([
+          fetch('/api/senso/stats').then(r => r.json()),
+          fetch('/api/senso/feedback').then(r => r.json())
+        ]);
+        statsRes = sensoStatsRes;
+        feedbackRes = sensoFeedbackRes;
+      }
       
       setStats(statsRes);
       setFeedback(feedbackRes);
@@ -183,6 +213,9 @@ export default function Dashboard() {
           </div>
         </motion.div>
       </main>
+      
+      {/* Voice EIR Assistant */}
+      <VoiceEIR />
     </div>
   );
 }

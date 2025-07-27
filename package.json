@@ -15,7 +15,9 @@
     "start": "bash scripts/start-engineer2.sh",
     "integration:test": "ts-node src/integration/orkes-worker.ts",
     "api:mongodb": "ts-node src/api/mongodb-api.ts",
-    "migrate:mongodb": "ts-node src/database/migrate-to-mongodb.ts"
+    "migrate:mongodb": "ts-node src/database/migrate-to-mongodb.ts",
+    "agents:start": "ts-node start-agents.ts",
+    "demo:full": "echo 'Starting full demo...' && npm run api:mongodb & npm run agents:start"
   },
   "dependencies": {
     "@types/cheerio": "^0.22.35",

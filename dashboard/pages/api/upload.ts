@@ -43,8 +43,9 @@ export default async function handler(
           .on('data', (data) => results.push(data))
           .on('end', async () => {
             // Process CSV data and store in Senso.ai Context OS
+            const uploadId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
             const processedData = results.map((row, index) => ({
-              id: `csv-upload-${Date.now()}-${index}`,
+              id: `csv-${uploadId}-${index}`,
               source: 'user_upload_csv',
               type: 'customer_data',
               timestamp: new Date(),
@@ -58,35 +59,59 @@ export default async function handler(
               tags: ['user-data', 'csv-import', 'customer-feedback']
             }));
 
-            // Send to API server
+            // Send to MongoDB API server
             try {
-              const apiResponse = await fetch('http://localhost:3000/api/upload/csv', {
+              // First try the MongoDB API on port 3003
+              const mongoResponse = await fetch('http://localhost:3003/api/feedback/bulk', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contexts: processedData })
+                body: JSON.stringify({ 
+                  feedbackList: processedData.map(ctx => ({
+                    id: ctx.id,
+                    source: ctx.source,
+                    type: ctx.type,
+                    timestamp: ctx.timestamp,
+                    sentiment: ctx.metadata?.sentiment || 'neutral',
+                    rating: ctx.metadata?.rating ? parseFloat(ctx.metadata.rating) : undefined,
+                    content: ctx.data?.feedback || ctx.data?.content || ctx.data?.review || JSON.stringify(ctx.data),
+                    metadata: ctx.metadata || {},
+                    tags: ctx.tags || []
+                  }))
+                })
               });
 
-              if (!apiResponse.ok) {
-                throw new Error(`API server error: ${apiResponse.status}`);
+              if (!mongoResponse.ok) {
+                throw new Error(`MongoDB API error: ${mongoResponse.status}`);
               }
 
-              const apiResult = await apiResponse.json();
-              console.log('API server response:', apiResult);
+              const mongoResult = await mongoResponse.json();
+              console.log('MongoDB response:', mongoResult);
 
-              res.status(200).json({ 
+              // Also try the Senso API server if running
+              try {
+                const apiResponse = await fetch('http://localhost:3000/api/upload/csv', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ contexts: processedData })
+                });
+                console.log('Senso API response:', apiResponse.status);
+              } catch (e) {
+                // Senso API is optional
+              }
+
+              return res.status(200).json({ 
                 success: true, 
-                message: `Processed ${results.length} rows from CSV`,
+                message: `Processed ${results.length} rows and saved to MongoDB`,
                 rowCount: results.length,
-                apiResponse: apiResult
+                mongodbResponse: mongoResult
               });
             } catch (apiError) {
-              console.error('Failed to send to API server:', apiError);
-              // Still return success since we processed the CSV
-              res.status(200).json({ 
+              console.error('Failed to save to MongoDB:', apiError);
+              return res.status(200).json({ 
                 success: true, 
-                message: `Processed ${results.length} rows locally (API server may be down)`,
+                message: `Processed ${results.length} rows locally (MongoDB may be down)`,
                 rowCount: results.length,
-                warning: 'Data processed but not stored in API server'
+                warning: 'Data processed but not saved to database'
               });
             }
           })

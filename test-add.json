@@ -1,0 +1,15 @@
+{
+  "feedbackList": [
+    {
+      "id": "unique-test-001",
+      "source": "csv_upload",
+      "type": "customer_feedback", 
+      "timestamp": "2025-07-26T16:30:00Z",
+      "sentiment": "positive",
+      "rating": 5,
+      "content": "Testing CSV upload - This AI tool is amazing!",
+      "metadata": {"test": true},
+      "tags": ["test-upload"]
+    }
+  ]
+}
