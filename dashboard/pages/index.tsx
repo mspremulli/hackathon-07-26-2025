@@ -8,7 +8,8 @@ import {
   RefreshCw,
   Download,
   Bell,
-  BarChart3
+  BarChart3,
+  Building2
 } from 'lucide-react';
 import StatsCard from '../components/StatsCard';
 import SentimentChart from '../components/SentimentChart';
@@ -29,6 +30,22 @@ export default function Dashboard() {
   const [feedback, setFeedback] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState(new Date());
+  const [companyConfig, setCompanyConfig] = useState<any>({ 
+    companyName: 'Your Company',
+    logo: '🏢'
+  });
+
+  const fetchCompanyConfig = async () => {
+    try {
+      const res = await fetch('/api/company-config');
+      if (res.ok) {
+        const config = await res.json();
+        setCompanyConfig(config);
+      }
+    } catch (error) {
+      console.error('Failed to fetch company config:', error);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -72,6 +89,7 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    fetchCompanyConfig();
     fetchData();
     const interval = setInterval(fetchData, 30000); // Refresh every 30s
     return () => clearInterval(interval);
@@ -102,7 +120,11 @@ export default function Dashboard() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <BarChart3 className="w-8 h-8 text-primary-600 mr-3" />
-              <h1 className="text-2xl font-bold text-gray-900">COO/EIR Assistant Dashboard</h1>
+              <h1 className="text-2xl font-bold text-gray-900">COO/EIR Assistant</h1>
+              <div className="ml-4 flex items-center bg-primary-50 px-3 py-1 rounded-lg">
+                <span className="text-lg mr-2">{companyConfig.logo}</span>
+                <span className="text-sm font-medium text-primary-700">{companyConfig.companyName}</span>
+              </div>
             </div>
             
             <div className="flex items-center space-x-4">

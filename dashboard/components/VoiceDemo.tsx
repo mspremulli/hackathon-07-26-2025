@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mic, MicOff, Volume2, Minimize2, Maximize2 } from 'lucide-react';
 
@@ -7,6 +7,15 @@ export default function VoiceDemo() {
   const [transcript, setTranscript] = useState('');
   const [eirResponse, setEirResponse] = useState('');
   const [isMinimized, setIsMinimized] = useState(false);
+  const [companyName, setCompanyName] = useState('Your Company');
+
+  useEffect(() => {
+    // Fetch company config
+    fetch('/api/company-config')
+      .then(res => res.json())
+      .then(config => setCompanyName(config.companyName))
+      .catch(console.error);
+  }, []);
 
   const startListening = () => {
     if (!('webkitSpeechRecognition' in window)) {
@@ -53,7 +62,7 @@ export default function VoiceDemo() {
     } else if (lowerQuestion.includes('worry') || lowerQuestion.includes('concerned')) {
       response = "Yes, you should be concerned. A 43% negative sentiment rate is above the danger threshold. But it's fixable - focus on the crash issues first, then address the UI complaints.";
     } else {
-      response = "As your EIR, I see we have 30 feedback items to analyze. The data shows clear patterns - crashes and performance issues. Let's discuss your product roadmap to address these concerns.";
+      response = `As your EIR for ${companyName}, I see we have feedback data to analyze. The patterns show clear priorities for your product roadmap. Let's discuss how to address these customer concerns strategically.`;
     }
     
     setEirResponse(response);
