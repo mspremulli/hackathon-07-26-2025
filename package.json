@@ -1,0 +1,40 @@
+{
+  "name": "coo-eir-assistant",
+  "version": "1.0.0",
+  "description": "COO/EIR AI Assistant - A2A Agents Hackathon",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "test:scraper": "ts-node tests/test-scraper.ts",
+    "test:reviews": "ts-node tests/test-scraper.ts reviews",
+    "test:social": "ts-node tests/test-scraper.ts social",
+    "test:demo": "ts-node tests/test-scraper.ts demo",
+    "test:extended": "ts-node tests/test-extended-scraper.ts",
+    "setup": "bash scripts/setup/setup-engineer2.sh",
+    "start": "bash scripts/start-engineer2.sh",
+    "integration:test": "ts-node src/integration/orkes-worker.ts",
+    "api:mongodb": "ts-node src/api/mongodb-api.ts",
+    "migrate:mongodb": "ts-node src/database/migrate-to-mongodb.ts",
+    "agents:start": "ts-node start-agents.ts",
+    "demo:full": "echo 'Starting full demo...' && npm run api:mongodb & npm run agents:start"
+  },
+  "dependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/cors": "^2.8.19",
+    "axios": "^1.6.5",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.16.5",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.23",
+    "@types/node": "^20.11.5",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

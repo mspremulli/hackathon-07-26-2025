@@ -1,0 +1,33 @@
+{
+  "app_name": "Demo App",
+  "platform": "app_store",
+  "total_reviews": 523,
+  "average_rating": 3.5,
+  "reviews": [
+    {
+      "text": "Interface is confusing. Can't find basic features.",
+      "rating": 2,
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "app_store",
+      "helpful_count": 23,
+      "verified": true
+    },
+    {
+      "text": "Works well but expensive subscription for what you get",
+      "rating": 3,
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "app_store",
+      "helpful_count": 15,
+      "verified": true
+    },
+    {
+      "text": "Missing key features that competitors have. Needs calendar integration.",
+      "rating": 3,
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "app_store",
+      "helpful_count": 34,
+      "verified": true
+    }
+  ],
+  "scraped_at": "2025-07-26T20:04:29.130Z"
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Communication Viewer - EIR Assistant</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .header {
+      background: #1a1a1a;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f00;
+    }
+    
+    .status-dot.connected { background: #0f0; }
+    
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+      background: #111;
+    }
+    
+    .agent-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .agent-card.active {
+      border-color: #0080ff;
+      box-shadow: 0 0 20px rgba(0, 128, 255, 0.3);
+    }
+    
+    .agent-card.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #0080ff;
+      animation: pulse 1s ease-out;
+    }
+    
+    .agent-name {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0080ff;
+    }
+    
+    .agent-status {
+      font-size: 0.8rem;
+      color: #888;
+    }
+    
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    
+    .message {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    .message.urgent {
+      border-color: #ff4444;
+      background: rgba(255, 68, 68, 0.1);
+    }
+    
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .message-route {
+      color: #0080ff;
+      font-weight: 500;
+    }
+    
+    .message-time {
+      color: #666;
+      font-size: 0.8rem;
+    }
+    
+    .message-type {
+      display: inline-block;
+      background: #333;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .message-content {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #ccc;
+    }
+    
+    .eir-thoughts {
+      background: rgba(0, 128, 255, 0.1);
+      border-color: #0080ff;
+      font-style: italic;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes pulse {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    
+    .connection-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #0080ff, transparent);
+      opacity: 0;
+      animation: flow 1s ease-out;
+      pointer-events: none;
+    }
+    
+    @keyframes flow {
+      from { opacity: 0; transform: scaleX(0); }
+      50% { opacity: 1; }
+      to { opacity: 0; transform: scaleX(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🤖 Agent Communication Viewer</h1>
+    <div class="status">
+      <div class="status-dot" id="status"></div>
+      <span id="status-text">Connecting...</span>
+    </div>
+  </div>
+  
+  <div class="agents-grid">
+    <div class="agent-card" id="agent-DataMonitor">
+      <div class="agent-name">📊 Data Monitor</div>
+      <div class="agent-status">Watching MongoDB</div>
+    </div>
+    <div class="agent-card" id="agent-Analyst">
+      <div class="agent-name">🔍 Analyst</div>
+      <div class="agent-status">Analyzing patterns</div>
+    </div>
+    <div class="agent-card" id="agent-EIR">
+      <div class="agent-name">🎯 EIR</div>
+      <div class="agent-status">Strategic thinking</div>
+    </div>
+    <div class="agent-card" id="agent-ActionTaker">
+      <div class="agent-name">⚡ Action Taker</div>
+      <div class="agent-status">Ready to execute</div>
+    </div>
+  </div>
+  
+  <div class="messages-container" id="messages"></div>
+  
+  <script>
+    const ws = new WebSocket('ws://localhost:8080');
+    const messagesEl = document.getElementById('messages');
+    const statusEl = document.getElementById('status');
+    const statusTextEl = document.getElementById('status-text');
+    
+    ws.onopen = () => {
+      statusEl.classList.add('connected');
+      statusTextEl.textContent = 'Connected - Agents are communicating';
+    };
+    
+    ws.onclose = () => {
+      statusEl.classList.remove('connected');
+      statusTextEl.textContent = 'Disconnected';
+    };
+    
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      
+      // Highlight active agents
+      if (data.from) {
+        const fromAgent = document.getElementById(`agent-${data.from}`);
+        if (fromAgent) {
+          fromAgent.classList.add('active');
+          setTimeout(() => fromAgent.classList.remove('active'), 1000);
+        }
+      }
+      
+      if (data.to && data.to !== 'broadcast') {
+        const toAgent = document.getElementById(`agent-${data.to}`);
+        if (toAgent) {
+          setTimeout(() => {
+            toAgent.classList.add('active');
+            setTimeout(() => toAgent.classList.remove('active'), 1000);
+          }, 300);
+        }
+      }
+      
+      // Create message element
+      const messageEl = document.createElement('div');
+      messageEl.className = 'message';
+      
+      if (data.type === 'urgent_insight') {
+        messageEl.classList.add('urgent');
+      }
+      
+      if (data.type === 'eir_thoughts') {
+        messageEl.classList.add('eir-thoughts');
+      }
+      
+      const time = new Date(data.timestamp).toLocaleTimeString();
+      
+      messageEl.innerHTML = `
+        <div class="message-header">
+          <span class="message-route">${data.from || 'System'} → ${data.to || 'All'}</span>
+          <span class="message-time">${time}</span>
+        </div>
+        <div class="message-type">${data.type || 'info'}</div>
+        <div class="message-content">
+          ${formatMessageContent(data)}
+        </div>
+      `;
+      
+      messagesEl.insertBefore(messageEl, messagesEl.firstChild);
+      
+      // Keep only last 50 messages
+      while (messagesEl.children.length > 50) {
+        messagesEl.removeChild(messagesEl.lastChild);
+      }
+    };
+    
+    function formatMessageContent(data) {
+      if (data.message) return data.message;
+      
+      if (data.data) {
+        if (data.type === 'eir_thoughts') {
+          return `"${data.data.thought}" <br><small>Confidence: ${(data.data.confidence * 100).toFixed(0)}%</small>`;
+        }
+        
+        if (data.type === 'urgent_insight') {
+          return `⚠️ Alert Level: ${data.data.alertLevel}<br>
+                  Trend: ${data.data.trend}<br>
+                  Recommendation: ${data.data.recommendation}`;
+        }
+        
+        if (data.type === 'new_data') {
+          return `Found ${data.data.count} new feedback items`;
+        }
+        
+        if (data.type === 'action_taken') {
+          return `✓ Executed: ${data.data.action}<br>
+                  Result: ${data.data.result.status}`;
+        }
+        
+        return `<pre>${JSON.stringify(data.data, null, 2)}</pre>`;
+      }
+      
+      return 'No content';
+    }
+  </script>
+</body>
+</html>

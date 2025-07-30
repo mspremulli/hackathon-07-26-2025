@@ -1,0 +1,25 @@
+{
+  "companyName": "Meta",
+  "feedback": [
+    {
+      "text": "Pros: Great benefits and learning opportunities\nCons: Long hours and high pressure environment",
+      "author": "Software Engineer",
+      "date": "2024-01-15T00:00:00.000Z",
+      "source": "glassdoor",
+      "sentiment": "neutral",
+      "engagement": {
+        "likes": 45
+      }
+    },
+    {
+      "text": "Pros: Innovation-focused culture\nCons: Management needs improvement, unclear career progression",
+      "author": "Product Manager",
+      "date": "2024-01-14T00:00:00.000Z",
+      "source": "glassdoor",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 67
+      }
+    }
+  ]
+}

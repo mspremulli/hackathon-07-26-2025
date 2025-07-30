@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vapi Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.0.0/dist/vapi.sdk.js"></script>
+</head>
+<body>
+  <h1>Vapi Test Page</h1>
+  <button id="startBtn">Start Call</button>
+  <button id="endBtn" disabled>End Call</button>
+  <div id="status">Ready</div>
+  
+  <script>
+    const publicKey = 'cf68648d-f5c3-4eaa-aebe-489120f48afd';
+    let vapi;
+    
+    try {
+      vapi = new Vapi(publicKey);
+      console.log('Vapi initialized');
+      
+      vapi.on('call-start', () => {
+        console.log('Call started');
+        document.getElementById('status').textContent = 'Call active';
+        document.getElementById('startBtn').disabled = true;
+        document.getElementById('endBtn').disabled = false;
+      });
+      
+      vapi.on('call-end', () => {
+        console.log('Call ended');
+        document.getElementById('status').textContent = 'Call ended';
+        document.getElementById('startBtn').disabled = false;
+        document.getElementById('endBtn').disabled = true;
+      });
+      
+      vapi.on('error', (e) => {
+        console.error('Vapi error:', e);
+        document.getElementById('status').textContent = 'Error: ' + JSON.stringify(e);
+      });
+      
+    } catch (e) {
+      console.error('Init error:', e);
+      document.getElementById('status').textContent = 'Init failed';
+    }
+    
+    document.getElementById('startBtn').onclick = async () => {
+      try {
+        document.getElementById('status').textContent = 'Starting...';
+        await vapi.start({
+          assistantId: "your-assistant-id" // You need to create an assistant in Vapi dashboard
+        });
+      } catch (e) {
+        console.error('Start error:', e);
+        document.getElementById('status').textContent = 'Start failed: ' + e.message;
+      }
+    };
+    
+    document.getElementById('endBtn').onclick = () => {
+      vapi.stop();
+    };
+  </script>
+</body>
+</html>

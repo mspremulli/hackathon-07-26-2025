@@ -1,0 +1,29 @@
+{
+  "companyName": "Microsoft",
+  "feedback": [
+    {
+      "text": "Impressed by Microsoft's commitment to sustainability. More tech companies should follow their lead.",
+      "author": "Tech Executive",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "linkedin",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 567,
+        "replies": 89,
+        "views": 12000
+      }
+    },
+    {
+      "text": "Former employees of Microsoft - what was your experience with work-life balance?",
+      "author": "HR Professional",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "linkedin",
+      "sentiment": "neutral",
+      "engagement": {
+        "likes": 234,
+        "replies": 156,
+        "views": 8900
+      }
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COO/EIR AI Assistant - Pitch Slide</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #000;
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #0f0f1e 100%);
+      padding: 60px 80px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Background pattern */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+      animation: pulse 20s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(180deg); }
+    }
+    
+    /* Header */
+    .header {
+      z-index: 1;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .title {
+      font-size: 64px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    .tagline {
+      font-size: 24px;
+      color: #a0a0a0;
+      font-weight: 300;
+    }
+    
+    /* Main content */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      z-index: 1;
+    }
+    
+    /* Left side */
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .problem-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+    }
+    
+    .problem-title {
+      font-size: 28px;
+      color: #ef4444;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .problem-text {
+      font-size: 20px;
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+    
+    .solution-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+    }
+    
+    .solution-title {
+      font-size: 28px;
+      color: #10b981;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .data-sources {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .source-group {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    .source-group-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #60a5fa;
+    }
+    
+    .source-list {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #e0e0e0;
+    }
+    
+    .implemented {
+      color: #10b981;
+      font-weight: 500;
+    }
+    
+    .coming-soon {
+      color: #6b7280;
+      font-style: italic;
+    }
+    
+    .metrics-box {
+      background: rgba(102, 126, 234, 0.1);
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 16px;
+      padding: 25px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    
+    .metric {
+      text-align: center;
+    }
+    
+    .metric-value {
+      font-size: 36px;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    
+    .metric-label {
+      font-size: 14px;
+      color: #a0a0a0;
+      margin-top: 5px;
+    }
+    
+    /* Right side - Demo */
+    .right-side {
+      position: relative;
+    }
+    
+    .demo-container {
+      background: #1a1a2e;
+      border-radius: 20px;
+      border: 3px solid rgba(102, 126, 234, 0.3);
+      height: 100%;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .demo-header {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .stats-preview {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .stat-card .value {
+      font-size: 32px;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+    
+    .stat-card .label {
+      font-size: 12px;
+      color: #999;
+      margin-top: 5px;
+    }
+    
+    .chart-preview {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      height: 200px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    
+    .voice-demo {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      padding: 15px 25px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+      animation: voicePulse 2s infinite;
+    }
+    
+    @keyframes voicePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .tech-badges {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 300px;
+    }
+    
+    .tech-badge {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      z-index: 1;
+    }
+    
+    .team-info {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    .live-demo-badge {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 20px;
+      font-weight: 600;
+      box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <h1 class="title">AI-Powered COO/EIR Assistant</h1>
+      <p class="tagline">Your 24/7 Strategic Advisor That Never Misses Customer Feedback</p>
+    </div>
+    
+    <div class="main-content">
+      <div class="left-side">
+        <div class="problem-box">
+          <h2 class="problem-title">🔥 The Problem</h2>
+          <p class="problem-text">
+            Startups drown in feedback across 20+ channels.<br>
+            By the time you analyze it, <strong>it's too late.</strong>
+          </p>
+        </div>
+        
+        <div class="solution-box">
+          <h2 class="solution-title">✨ Our Solution</h2>
+          <div class="data-sources">
+            <div class="source-group">
+              <div class="source-group-title">🌐 Auto-Scraped</div>
+              <div class="source-list">
+                <span class="implemented">• App Store Reviews ✓</span><br>
+                <span class="implemented">• Reddit Discussions ✓</span><br>
+                <span class="implemented">• GitHub Issues ✓</span><br>
+                <span class="coming-soon">• Discord & Slack</span><br>
+                <span class="implemented">• Social Media ✓</span>
+              </div>
+            </div>
+            <div class="source-group">
+              <div class="source-group-title">📤 Manual Upload</div>
+              <div class="source-list">
+                <span class="implemented">• CSV Files ✓</span><br>
+                <span class="coming-soon">• Google Analytics</span><br>
+                <span class="implemented">• Customer Surveys ✓</span><br>
+                <span class="coming-soon">• NPS Scores</span><br>
+                <span class="coming-soon">• Support Tickets</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="metrics-box">
+          <div class="metric">
+            <div class="metric-value">31</div>
+            <div class="metric-label">Live Items</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">43%</div>
+            <div class="metric-label">Negative</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">6</div>
+            <div class="metric-label">Active Sources</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value"><100ms</div>
+            <div class="metric-label">Response</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="right-side">
+        <div class="tech-badges">
+          <span class="tech-badge">MongoDB</span>
+          <span class="tech-badge">Bright Data</span>
+          <span class="tech-badge">Senso.ai</span>
+          <span class="tech-badge">Next.js</span>
+        </div>
+        
+        <div class="demo-container">
+          <div class="demo-header">
+            <span>📊</span>
+            <span>COO/EIR Dashboard - Live Demo</span>
+          </div>
+          
+          <div class="stats-preview">
+            <div class="stat-card">
+              <div class="value">3.2</div>
+              <div class="label">Avg Rating</div>
+            </div>
+            <div class="stat-card">
+              <div class="value">57%</div>
+              <div class="label">Positive</div>
+            </div>
+          </div>
+          
+          <div class="chart-preview">
+            📈 Real-time Sentiment Analysis
+          </div>
+          
+          <div class="chart-preview" style="height: 150px;">
+            📋 Live Feedback Stream
+          </div>
+          
+          <div class="voice-demo">
+            <span>🎙️</span>
+            <span>"What's our user sentiment?"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="team-info">A2A Agents Hackathon 2025</div>
+      <div class="live-demo-badge">🚀 LIVE DEMO READY</div>
+    </div>
+  </div>
+</body>
+</html>

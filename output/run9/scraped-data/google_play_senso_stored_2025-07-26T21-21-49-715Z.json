@@ -1,0 +1,50 @@
+{
+  "platform": "google_play",
+  "app_id": "com.whatsapp",
+  "total_reviews": 5,
+  "reviews": [
+    {
+      "text": "App crashes constantly when trying to upload photos. Very frustrating!",
+      "rating": 1,
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 45,
+      "verified": true
+    },
+    {
+      "text": "The new update made everything so slow. It takes forever to load.",
+      "rating": 2,
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 32,
+      "verified": true
+    },
+    {
+      "text": "Love the features but the performance issues are killing the experience",
+      "rating": 3,
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 28,
+      "verified": true
+    },
+    {
+      "text": "Battery drain is insane! My phone dies in 2 hours with this app",
+      "rating": 1,
+      "date": "2024-01-17T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 67,
+      "verified": true
+    },
+    {
+      "text": "Great concept but needs better customer support. No response to my issues.",
+      "rating": 2,
+      "date": "2024-01-16T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 19,
+      "verified": true
+    }
+  ],
+  "scraped_at": "2025-07-26T21:21:49.710Z",
+  "is_real_data": false,
+  "senso_context_id": "local-1753564909710-e3see65bx"
+}

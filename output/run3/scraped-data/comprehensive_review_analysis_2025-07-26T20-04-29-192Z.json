@@ -1,0 +1,240 @@
+{
+  "all_reviews": [
+    {
+      "text": "App crashes constantly when trying to upload photos. Very frustrating!",
+      "rating": 1,
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 45,
+      "verified": true
+    },
+    {
+      "text": "The new update made everything so slow. It takes forever to load.",
+      "rating": 2,
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 32,
+      "verified": true
+    },
+    {
+      "text": "Love the features but the performance issues are killing the experience",
+      "rating": 3,
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 28,
+      "verified": true
+    },
+    {
+      "text": "Battery drain is insane! My phone dies in 2 hours with this app",
+      "rating": 1,
+      "date": "2024-01-17T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 67,
+      "verified": true
+    },
+    {
+      "text": "Great concept but needs better customer support. No response to my issues.",
+      "rating": 2,
+      "date": "2024-01-16T00:00:00.000Z",
+      "source": "google_play",
+      "helpful_count": 19,
+      "verified": true
+    },
+    {
+      "text": "Interface is confusing. Can't find basic features.",
+      "rating": 2,
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "app_store",
+      "helpful_count": 23,
+      "verified": true
+    },
+    {
+      "text": "Works well but expensive subscription for what you get",
+      "rating": 3,
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "app_store",
+      "helpful_count": 15,
+      "verified": true
+    },
+    {
+      "text": "Missing key features that competitors have. Needs calendar integration.",
+      "rating": 3,
+      "date": "2024-01-18T00:00:00.000Z",
+      "source": "app_store",
+      "helpful_count": 34,
+      "verified": true
+    },
+    {
+      "text": "Customer service was helpful but the product quality has declined",
+      "rating": 3,
+      "date": "2024-01-15T00:00:00.000Z",
+      "source": "google_reviews",
+      "verified": true
+    },
+    {
+      "text": "Great experience overall. Fast shipping and good communication.",
+      "rating": 5,
+      "date": "2024-01-14T00:00:00.000Z",
+      "source": "google_reviews",
+      "verified": true
+    }
+  ],
+  "by_platform": {
+    "google_play": {
+      "app_name": "Demo App",
+      "platform": "google_play",
+      "total_reviews": 847,
+      "average_rating": 3.2,
+      "reviews": [
+        {
+          "text": "App crashes constantly when trying to upload photos. Very frustrating!",
+          "rating": 1,
+          "date": "2024-01-20T00:00:00.000Z",
+          "source": "google_play",
+          "helpful_count": 45,
+          "verified": true
+        },
+        {
+          "text": "The new update made everything so slow. It takes forever to load.",
+          "rating": 2,
+          "date": "2024-01-19T00:00:00.000Z",
+          "source": "google_play",
+          "helpful_count": 32,
+          "verified": true
+        },
+        {
+          "text": "Love the features but the performance issues are killing the experience",
+          "rating": 3,
+          "date": "2024-01-18T00:00:00.000Z",
+          "source": "google_play",
+          "helpful_count": 28,
+          "verified": true
+        },
+        {
+          "text": "Battery drain is insane! My phone dies in 2 hours with this app",
+          "rating": 1,
+          "date": "2024-01-17T00:00:00.000Z",
+          "source": "google_play",
+          "helpful_count": 67,
+          "verified": true
+        },
+        {
+          "text": "Great concept but needs better customer support. No response to my issues.",
+          "rating": 2,
+          "date": "2024-01-16T00:00:00.000Z",
+          "source": "google_play",
+          "helpful_count": 19,
+          "verified": true
+        }
+      ],
+      "scraped_at": "2025-07-26T20:04:29.134Z"
+    },
+    "app_store": {
+      "app_name": "Demo App",
+      "platform": "app_store",
+      "total_reviews": 523,
+      "average_rating": 3.5,
+      "reviews": [
+        {
+          "text": "Interface is confusing. Can't find basic features.",
+          "rating": 2,
+          "date": "2024-01-20T00:00:00.000Z",
+          "source": "app_store",
+          "helpful_count": 23,
+          "verified": true
+        },
+        {
+          "text": "Works well but expensive subscription for what you get",
+          "rating": 3,
+          "date": "2024-01-19T00:00:00.000Z",
+          "source": "app_store",
+          "helpful_count": 15,
+          "verified": true
+        },
+        {
+          "text": "Missing key features that competitors have. Needs calendar integration.",
+          "rating": 3,
+          "date": "2024-01-18T00:00:00.000Z",
+          "source": "app_store",
+          "helpful_count": 34,
+          "verified": true
+        }
+      ],
+      "scraped_at": "2025-07-26T20:04:29.130Z"
+    },
+    "google_reviews": {
+      "app_name": "Your Company",
+      "platform": "google_reviews",
+      "total_reviews": 156,
+      "average_rating": 3.8,
+      "reviews": [
+        {
+          "text": "Customer service was helpful but the product quality has declined",
+          "rating": 3,
+          "date": "2024-01-15T00:00:00.000Z",
+          "source": "google_reviews",
+          "verified": true
+        },
+        {
+          "text": "Great experience overall. Fast shipping and good communication.",
+          "rating": 5,
+          "date": "2024-01-14T00:00:00.000Z",
+          "source": "google_reviews",
+          "verified": true
+        }
+      ],
+      "scraped_at": "2025-07-26T20:04:29.137Z"
+    }
+  },
+  "summary": {
+    "total_reviews_analyzed": 10,
+    "platforms_scraped": [
+      "google_play",
+      "app_store",
+      "google_reviews"
+    ],
+    "overall_rating": 2.5,
+    "sentiment": {
+      "positive": 30,
+      "negative": 0,
+      "neutral": 70
+    },
+    "top_issues": [
+      {
+        "issue": "Performance Issues",
+        "count": 3,
+        "examples": [
+          "App crashes constantly when trying to upload photos. Very frustrating!...",
+          "The new update made everything so slow. It takes forever to load....",
+          "Love the features but the performance issues are killing the experience..."
+        ]
+      },
+      {
+        "issue": "Missing Features",
+        "count": 2,
+        "examples": [
+          "Great concept but needs better customer support. No response to my issues....",
+          "Missing key features that competitors have. Needs calendar integration...."
+        ]
+      },
+      {
+        "issue": "Customer Support",
+        "count": 2,
+        "examples": [
+          "Great concept but needs better customer support. No response to my issues....",
+          "Customer service was helpful but the product quality has declined..."
+        ]
+      }
+    ],
+    "key_insights": [
+      "📈 Rising concerns about: features"
+    ],
+    "recommended_actions": [
+      {
+        "priority": "medium",
+        "action": "Monitor rising concern about features",
+        "impact": "Prevent future negative reviews"
+      }
+    ]
+  }
+}

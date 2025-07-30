@@ -1,0 +1,28 @@
+{
+  "query": "AI startup",
+  "feedback": [
+    {
+      "text": "AI startup is overhyped. We tried it and went back to our old solution after 2 months.",
+      "author": "skeptical_dev",
+      "date": "2024-01-20T00:00:00.000Z",
+      "source": "hackernews",
+      "sentiment": "negative",
+      "engagement": {
+        "likes": 234,
+        "replies": 89
+      },
+      "url": "https://news.ycombinator.com/item?id=38912345"
+    },
+    {
+      "text": "We've been using AI startup in production for 6 months. Rock solid and great performance.",
+      "author": "cto_startup",
+      "date": "2024-01-19T00:00:00.000Z",
+      "source": "hackernews",
+      "sentiment": "positive",
+      "engagement": {
+        "likes": 456,
+        "replies": 123
+      }
+    }
+  ]
+}
